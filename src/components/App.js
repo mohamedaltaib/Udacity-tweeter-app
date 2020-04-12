@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import handleFetchData from "../actions/shared";
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleFetchData());
+  }
   render() {
-    return (
-      <div>
-        Starter Code
-      </div>
-    )
+    const { tweets, users } = this.props.state;
+
+    return <div>ok</div>;
   }
 }
 
-export default App
+export default connect((state) => ({
+  state: state,
+}))(App);
